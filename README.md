@@ -26,6 +26,10 @@ uint8_t rx_buffer[100];
 uint8_t tx_buffer[100];
 
 int main(void) {
+
+    // ...init DMA && UART
+    __HAL_UART_ENABLE_IT(&huart1, UART_IT_IDLE);    // enable idle line interrupt
+
     transceiver.huart = &huart1;
     transceiver.hdma = &hdma_usart1_rx;
     transceiver.fields = MessageBase_fields;
